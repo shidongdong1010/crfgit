@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                http://www.springframework.org/schema/tx
+                http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                http://www.springframework.org/schema/mvc
+       			http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+                ">
+                
+    <!-- 配置数据源 -->
+   <!--  <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    	<property name="url" value="jdbc:oracle:thin:@192.168.50.193:1521:kaifa" />
+        <property name="username" value="salarydev" />
+        <property name="password" value="salary" />
+        <property name="initialSize" value="1" />
+        <property name="maxActive" value="20" />
+        <property name="dbType" value="true" />
+        <property name="validationQuery" value="select 1 from dual" />
+    </bean> -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+    	<property name="url" value="jdbc:oracle:thin:@192.168.50.193:1521:kaifa" />
+		<property name="username" value="salarydev" />
+		<property name="password" value="salary" />
+	</bean>
+    
+    <!-- 事务配置 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  		<property name="dataSource" ref="dataSource" />
+  	</bean>
+  	
+  	<!-- 注册事务注解处理器 -->
+  	<tx:annotation-driven transaction-manager="transactionManager" />
+  	
+    <!-- 在jdbcTemplate模板中注入数据源 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+</beans>

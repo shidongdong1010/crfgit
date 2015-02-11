@@ -1,0 +1,4 @@
+2014-08-02 23:40:10,671 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2014-08-02 23:40:12,138 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} inited
+2014-08-02 23:42:22,173 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2014-08-02 23:42:23,499 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} inited

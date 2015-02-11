@@ -1,0 +1,402 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.dd</groupId>
+	<artifactId>activiti_web</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>activiti_web Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<!-- 项目属性 -->
+	<properties>
+		<jdk.version>1.5</jdk.version>
+		<spring.version>3.2.5.RELEASE</spring.version>
+		<hibernate.version>4.2.5.Final</hibernate.version>
+		<spring-data-jpa.version>1.3.4.RELEASE</spring-data-jpa.version>
+		<commons-dbcp.version>1.4</commons-dbcp.version>
+		<ehcache.version>2.5.2</ehcache.version>
+		<jackson.version>2.0.4</jackson.version>
+		<spymemcached.version>2.8.1</spymemcached.version>
+		<guava.version>12.0</guava.version>
+		<commons-lang3.version>3.1</commons-lang3.version>
+		<commons-io.version>2.4</commons-io.version>
+		<joda-time.version>2.1</joda-time.version>
+		<slf4j.version>1.7.5</slf4j.version>
+		<log4j.version>1.2.17</log4j.version>
+		<jetty.version>8.1.10.v20130312</jetty.version>
+		<h2.version>1.3.173</h2.version>
+		<junit.version>4.10</junit.version>
+		<mockito.version>1.9.0</mockito.version>
+		<powermock.version>1.4.12</powermock.version>
+		<activiti.version>5.15.1-kft</activiti.version>
+		<activiti.engine.version>5.15.1-kft</activiti.engine.version>
+
+		<!-- jdbc h2 -->
+		<!-- <jdbc.driver.groupId>com.h2database</jdbc.driver.groupId> <jdbc.driver.artifactId>h2</jdbc.driver.artifactId> 
+			<jdbc.driver.version>1.3.173</jdbc.driver.version> -->
+
+		<!-- jdbc mysql -->
+		<!-- <jdbc.driver.groupId>mysql</jdbc.driver.groupId> <jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId> 
+			<jdbc.driver.version>5.1.11</jdbc.driver.version> -->
+		<!-- jdbc oracle -->
+		<jdbc.driver.groupId>com.oracle</jdbc.driver.groupId>
+		<jdbc.driver.artifactId>ojdbc14</jdbc.driver.artifactId>
+		<jdbc.driver.version>10.2.0.4.0</jdbc.driver.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<!-- servlet jsp and jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0</version>
+			<type>jar</type>
+			<scope>provided</scope>
+		</dependency>
+		<!-- log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<type>jar</type>
+		</dependency>
+		<!-- activiti -->
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-engine</artifactId>
+			<version>5.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-spring</artifactId>
+			<version>5.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>2.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+		<!-- 数据库连接池 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.31</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.4.0</version>
+		</dependency>
+		<!-- Activiti -->
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-engine</artifactId>
+			<version>5.15.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-spring</artifactId>
+			<version>5.15.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>2.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<!-- File Upload -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.collections</groupId>
+			<artifactId>google-collections</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- 数据库连接池 -->
+		<!-- <dependency> <groupId>com.alibaba</groupId> <artifactId>druid</artifactId> 
+			<version>0.2.12</version> </dependency> -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.6</version>
+		</dependency>
+
+		<!-- hibernate部分 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.8.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.8.Final</version>
+			<classifier>sources</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>3.6.8.Final</version>
+		</dependency>
+
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.37</version>
+		</dependency>
+		
+		<!-- Velocity -->  
+		<dependency>  
+		    <groupId>org.apache.velocity</groupId>  
+		    <artifactId>velocity</artifactId>  
+		    <version>1.5</version>  
+		</dependency>  
+		<dependency>  
+		    <groupId>velocity-tools</groupId>  
+		    <artifactId>velocity-tools-generic</artifactId>  
+		    <version>1.2</version>  
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>2.7.14</version>
+			<type>pom</type>
+		</dependency>
+	</dependencies>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+			<!-- compiler插件, 设定JDK版本 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+
+			<!-- eclipse插件, 设定wtp版本并添加springIDE nature -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<wtpversion>2.0</wtpversion>
+					<additionalProjectnatures>
+						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+					</additionalProjectnatures>
+				</configuration>
+			</plugin>
+
+			<!-- jetty插件, 设定context path与spring profile -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<webAppConfig>
+						<contextPath>/${project.artifactId}</contextPath>
+					</webAppConfig>
+				</configuration>
+			</plugin>
+
+			<!-- resource插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<nonFilteredFileExtensions>
+						<!-- 过滤流程定义资源文件 -->
+						<nonFilteredFileExtension>zip</nonFilteredFileExtension>
+						<nonFilteredFileExtension>bar</nonFilteredFileExtension>
+						<nonFilteredFileExtension>png</nonFilteredFileExtension>
+						<nonFilteredFileExtension>bpmn</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- tomcat6 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat6-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/${project.artifactId}</path>
+				</configuration>
+			</plugin>
+
+			<!-- tomcat7 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/${project.artifactId}</path>
+				</configuration>
+			</plugin>
+
+			<!-- hibernate插件，用来生成实体和映射文件 -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.2</version>
+				<dependencies>
+					<!--<dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
+						<version>5.1.31</version> </dependency> -->
+					<dependency>
+						<groupId>com.oracle</groupId>
+						<artifactId>ojdbc14</artifactId>
+						<version>10.2.0.4.0</version>
+					</dependency>
+					<dependency>
+						<groupId>cglib</groupId>
+						<artifactId>cglib</artifactId>
+						<version>2.2</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<components>
+						<component>
+							<name>hbm2hbmxml</name>
+							<implementation>jdbcconfiguration</implementation>
+							<outputDirectory>target/generated-resources/hibernate3</outputDirectory>
+						</component>
+						<component>
+							<name>hbm2java</name>
+							<implementation>jdbcconfiguration</implementation>
+							<outputDirectory>target/generated-sources/hibernate3</outputDirectory>
+						</component>
+					</components>
+					<componentProperties>
+						<configurationfile>src/main/resources/hibernate.cfg.xml</configurationfile>
+						<ejb3>true</ejb3>
+						<packagename>model</packagename>
+					</componentProperties>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<finalName>activiti_web</finalName>
+	</build>
+</project>

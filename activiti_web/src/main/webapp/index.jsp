@@ -1,0 +1,1 @@
+<jsp:forward page="/sys/index.do"/>

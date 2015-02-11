@@ -1,0 +1,8 @@
+2014-08-01 21:46:46,907 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2014-08-01 21:46:57,081 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2014-08-01 21:47:45,618 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2014-08-01 21:48:46,607 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2014-08-01 21:49:54,298 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2014-08-01 22:56:49,010 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2014-08-01 22:57:11,945 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2014-08-01 22:58:43,019 [main] INFO  [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
